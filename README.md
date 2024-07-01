@@ -39,6 +39,9 @@ idxmax - returns the index of the maximum (use this to return the column variabl
 
 *Joins* 
 
+merge - pd.merge(df1,df2, on ="column", how = "inner")
+-- left_on , right_on to join by different column names 
+
 owners.groupby('area').agg({'owner':'count'}) -- this will aggregate counts of owners in each area 
                                     -- group by and sort also take lists as inputs .. 
 lef_on and right_on let you join on different column names 
@@ -49,10 +52,35 @@ join using indexs (use left_index = True and right_index = True if you are joini
 semi join -- filter using isin 
 anti join -- use indicator = True to get _merge column and use loc operator to filter _merge = "left_only" 
 
+*concat*
 
+pd.concat([df1,df2,df3], ignore_index = True
+, keys = [k1,k2,k3]
+, sort = True -- alphabetically sort based on column names 
+, join = 'inner' -- this will only result matching column names , default is 'outer'
+)
 
+*verifying integrity in merge&concat*
 
+.merge(validate = None ) -- 'one_to_one' etc 
+-- if validation is successful, merge results in a table and doesn't throw error 
 
+.concat(verfiy_integrity = False -- default value ) -- True will check if the indexes have overlapping values 
+
+-- you can drop dupes after merging wihtout ahving these arguments 
+
+*merge_ordered* 
+-- this is used for time series data and to hande missing data 
+-- default how is outer as opposed to inner in merge (this is why forward filling missing data can be useful)
+-- pd.merge_ordered this is the only way merge_ordered can be called not df.merge_ordered 
+-- this method also sorts data on the join column 
+-- fill_method = 'ffill'
+
+*merge_asof* 
+--to fill data not 
+
+*.query* 
+*.melt* 
 
 **MatplotLin Notes** 
 
