@@ -37,6 +37,13 @@ sort_values("column_name". ascending = True)
 
 idxmax - returns the index of the maximum (use this to return the column variable to resue in code)
 
+*pivot tables*
+
+df.pivot_table(index='column1', columns='column2',  values='column3', aggfunc='mean', fill_value=0)
+-- default aggfun is mean 
+gdp_pivot = gdp_pop.pivot_table('gdp_per_capita', 'date', 'country')
+
+
 *Joins* 
 
 merge - pd.merge(df1,df2, on ="column", how = "inner")
@@ -79,8 +86,20 @@ pd.concat([df1,df2,df3], ignore_index = True
 *merge_asof* 
 --to fill data not 
 
-*.query* 
+*.query*
+
+stocks.query('nike>60 and disney<90') 
+-- its a where statement - nike and disney are columns 
+
 *.melt* 
+-- melt converts data from long to wide 
+-- id_vars = identifier variables ~ these remain unchanged 
+-- value_vars /var_name = columns to unpivot 
+-- value_name = melted column name  
+-- Use melt on ten_yr, unpivot everything besides the metric column
+bond_perc = ten_yr.melt(id_vars='metric', var_name='date', value_name='close')
+
+
 
 **MatplotLin Notes** 
 

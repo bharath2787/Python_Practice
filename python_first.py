@@ -12,3 +12,5 @@ plt.xlabel('Sepal length')
 plt.ylabel('Sepal width')
 plt.title('Iris Dataset')
 plt.show()
+
+iris.head()
