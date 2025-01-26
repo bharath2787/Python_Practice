@@ -100,6 +100,13 @@ stocks.query('nike>60 and disney<90')
 bond_perc = ten_yr.melt(id_vars='metric', var_name='date', value_name='close')
 
 
+**Statistics in Python** 
+
+*aggregates*
+np.mean, np,median , statistics.mode
+
+*measures of spread*
+
 
 **MatplotLin Notes** 
 
